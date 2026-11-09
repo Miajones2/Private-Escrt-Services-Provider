@@ -1,0 +1,574 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Private Hook Up Services</title>
+<style>
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #090909;
+  color: #f5f0e5;
+}
+header {
+  padding: 28px 8%;
+  border-bottom: 1px solid #806b42;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  color: #d7b66e;
+  font-size: 21px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+nav a {
+  color: #ddd;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 13px;
+}
+.hero {
+  text-align: center;
+  padding: 90px 20px;
+  background: linear-gradient(135deg,#16130e,#080808);
+}
+.hero h1 {
+  color: #d7b66e;
+  font-size: clamp(30px,5vw,48px);
+  letter-spacing: 3px;
+}
+.hero p {
+  color: #c4bda9;
+  line-height: 1.8;
+}
+.button {
+  display: inline-block;
+  padding: 13px 28px;
+  margin-top: 20px;
+  border: 1px solid #d7b66e;
+  color: #d7b66e;
+  text-decoration: none;
+}
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 45px 20px;
+}
+h2 {
+  color: #d7b66e;
+  border-bottom: 1px solid #594a30;
+  padding-bottom: 12px;
+}
+.card {
+  background: #151515;
+  border: 1px solid #403723;
+  border-radius: 10px;
+  padding: 25px;
+  margin: 20px 0;
+}
+.line {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 13px 0;
+  border-bottom: 1px solid #333;
+}
+.total {
+  color: #e4c47b;
+  font-size: 23px;
+  font-weight: bold;
+}
+.note {
+  color: #aaa;
+  font-size: 13px;
+  line-height: 1.7;
+}
+footer {
+  text-align: center;
+  padding: 30px;
+  border-top: 1px solid #403723;
+  color: #999;
+  font-size: 12px;
+}
+@media(max-width:600px) {
+  header { flex-direction: column; gap: 15px; }
+  nav a { margin: 0 6px; }
+  .line { font-size: 14px; }
+}
+/* =================================
+   LUXURY MOTION ANIMATIONS
+================================= */
+
+/* Smooth page scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hero entrance */
+.hero h1 {
+  animation: fadeDown 1.2s ease both;
+}
+
+.hero p {
+  animation: fadeUp 1.5s ease both;
+}
+
+.hero .button {
+  animation: fadeUp 1.8s ease both;
+}
+
+/* Floating romantic glow */
+.hero {
+  animation: softGlow 6s ease-in-out infinite alternate;
+}
+
+/* Floating kiss decoration */
+.hero::before {
+  animation: floatKiss 5s ease-in-out infinite;
+}
+
+.hero::after {
+  animation: floatKiss 6s ease-in-out infinite reverse;
+}
+
+/* Section entrance */
+.container {
+  animation: fadeUp 1s ease both;
+}
+
+/* Luxury card hover */
+.card {
+  transition:
+    transform .4s ease,
+    box-shadow .4s ease,
+    border-color .4s ease;
+}
+
+.card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 12px 35px #d7b66e22;
+}
+
+/* Button hover */
+.button,
+.urgent-button {
+  transition: all .35s ease;
+}
+
+.button:hover,
+.urgent-button:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 0 25px #d7b66e55;
+}
+
+/* Navigation hover */
+nav a {
+  transition: color .3s ease;
+}
+
+nav a:hover {
+  color: #dfbd79;
+}
+
+/* Romantic divider */
+.romantic-divider {
+  animation: heartbeat 2.5s ease-in-out infinite;
+}
+
+/* Keyframes */
+
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatKiss {
+  0%, 100% {
+    transform: translateY(0) rotate(-15deg);
+  }
+  50% {
+    transform: translateY(-18px) rotate(12deg);
+  }
+}
+
+@keyframes softGlow {
+  from {
+    filter: brightness(.9);
+  }
+  to {
+    filter: brightness(1.15);
+  }
+}
+
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.06);
+  }
+}
+
+/* Respect reduced motion settings */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ==================================
+   VISIBLE FLOATING KISS MARKS 💋
+================================== */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* First floating kiss */
+.hero::before {
+  content: "💋";
+  position: absolute;
+  top: 18%;
+  left: 7%;
+  font-size: 55px;
+  opacity: 0.75;
+  z-index: 2;
+  pointer-events: none;
+  animation: kissFloatOne 4s ease-in-out infinite;
+}
+
+/* Second floating kiss */
+.hero::after {
+  content: "💋";
+  position: absolute;
+  bottom: 15%;
+  right: 8%;
+  font-size: 65px;
+  opacity: 0.70;
+  z-index: 2;
+  pointer-events: none;
+  animation: kissFloatTwo 5s ease-in-out infinite;
+}
+
+/* Kiss movement */
+@keyframes kissFloatOne {
+  0%, 100% {
+    transform: translateY(0) rotate(-15deg) scale(1);
+  }
+  50% {
+    transform: translateY(-30px) rotate(15deg) scale(1.2);
+  }
+}
+
+@keyframes kissFloatTwo {
+  0%, 100% {
+    transform: translateY(0) rotate(15deg) scale(1);
+  }
+  50% {
+    transform: translateY(25px) rotate(-15deg) scale(1.15);
+  }
+}
+
+/* Soft romantic glow */
+.hero {
+  background:
+    radial-gradient(circle at 15% 30%, #8b244744, transparent 35%),
+    radial-gradient(circle at 85% 70%, #c77b8833, transparent 35%),
+    linear-gradient(135deg,#1c1018,#090809);
+}
+
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">PRIVATE HOOK UP SERVICES</div>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#payment">Payment</a>
+    <a href="#policy">Policies</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>PRIVATE HOOK UP SERVICES</h1>
+  <p>
+    Professional Client Coordination<br>
+    Confidentiality • Transparency • Customer Support
+  </p>
+  <a class="button" href="#payment">VIEW PAYMENT DETAILS</a>
+</section>
+
+<section class="container" id="about">
+  <h2>About Our Services</h2>
+  <div class="card">
+    <p>
+      Welcome to Private Hook Up Services.
+      We aim to provide transparent booking
+      coordination and professional customer support.
+    </p>
+    <p class="note">
+      All arrangements are voluntary and subject
+      to applicable Australian laws and written agreements.
+      All participants must be 18 or older.
+    </p>
+  </div>
+</section>
+
+<section class="container" id="payment">
+  <h2>Client Payment Summary</h2>
+
+  <div class="card">
+    <p>Client: <strong>Mr. John Cornelly</strong></p>
+    <p>Other Party: <strong>Ms. Mia Jones</strong></p>
+
+    <div class="line">
+      <span>Total Agreed Charges</span>
+      <strong>AUD $4,299.00</strong>
+    </div>
+
+    <div class="line">
+      <span>Initial Payment Received</span>
+      <strong>AUD $800.00</strong>
+    </div>
+
+    <div class="line">
+      <span>Remaining Balance</span>
+      <strong class="total">AUD $3,499.00</strong>
+    </div>
+
+    <p class="note">
+      The initial A$800 payment is recorded as an
+      initial registration payment/deposit and credited
+      toward the total amount, subject to the actual receipt
+      and signed agreement.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>Proposed Refund Calculation</h2>
+
+    <div class="line">
+      <span>Total Agreed Charges</span>
+      <span>AUD $4,299.00</span>
+    </div>
+
+    <div class="line">
+      <span>Proposed Refund Rate</span>
+      <span>50%</span>
+    </div>
+
+    <div class="line">
+      <span>Proposed Refund Amount</span>
+      <strong class="total">AUD $2,149.50</strong>
+    </div>
+
+    <p class="note">
+      This is a proposed calculation only, not a guaranteed
+      refund. Eligibility, expiration conditions, eligible
+      charges and payment timelines must be verified in a
+      valid written agreement and comply with Australian law.
+    </p>
+  </div>
+</section>
+
+<section class="container" id="policy">
+  <h2>Company Policies</h2>
+
+  <div class="card">
+    <h3>Confidentiality</h3>
+    <p class="note">
+      Client information and private communications
+      will be handled in accordance with applicable
+      privacy laws.
+    </p>
+
+    <h3>Payment Transparency</h3>
+    <p class="note">
+      All charges must be disclosed before payment.
+      No additional fees without prior agreement.
+    </p>
+
+    <h3>Refund and Cancellation</h3>
+    <p class="note">
+      Refunds and cancellations are governed by the
+      signed agreement and applicable Australian
+      consumer protection laws.
+    </p>
+
+    <h3>Consent and Safety</h3>
+    <p class="note">
+      All participation must be voluntary.
+      Every individual has the right to refuse
+      or withdraw consent at any time.
+    </p>
+  </div>
+</section>
+
+<section class="container">
+  <h2>Company Information</h2>
+  <div class="card">
+    <p>Legal Business Name: PRIVATE ESCORTS</p>
+    <p>ABN: 32 149 357 839</p>
+    <p>Business Address:  2204 NSW</p>
+    <p>Customer Support: privateescortservices2012@gmail.com</p>
+    <p class="note">
+      
+    </p>
+  </div>
+  <!-- URGENT PAYMENT & AGREEMENT SECTION -->
+
+<section class="container" id="urgent-payment">
+
+<style>
+.urgent-box {
+  background: linear-gradient(145deg,#19150e,#101010);
+  border: 1px solid #b99751;
+  border-radius: 14px;
+  padding: 30px;
+}
+.urgent-title {
+  color: #e1bd72;
+  font-size: 25px;
+  letter-spacing: 1px;
+}
+.payment-step {
+  background: #211d15;
+  border-left: 3px solid #d7b66e;
+  padding: 16px;
+  margin: 15px 0;
+  border-radius: 5px;
+}
+.urgent-button {
+  display: inline-block;
+  background: #c5a15b;
+  color: #111;
+  padding: 14px 22px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  margin-top: 15px;
+}
+</style>
+
+<div class="urgent-box">
+
+<h2 class="urgent-title">
+URGENT PAYMENT & AGREEMENT PROCESSING
+</h2>
+
+<p>
+Dear Mr. John Cornelly,
+</p>
+
+<p>
+To complete your booking documentation,
+please follow the payment verification process below.
+</p>
+
+<div class="payment-step">
+<strong>STEP 1 – REVIEW PAYMENT DETAILS</strong>
+<p>
+Review the total amount, initial payment,
+remaining balance, and applicable charges.
+</p>
+</div>
+
+<div class="payment-step">
+<strong>STEP 2 – COMPLETE PAYMENT</strong>
+<p>
+Use only the company's verified payment
+method and official payment instructions.
+Keep your transaction receipt for reference.
+</p>
+</div>
+
+<div class="payment-step">
+<strong>STEP 3 – PAYMENT VERIFICATION</strong>
+<p>
+Our administration team will verify the
+transaction and issue an acknowledgment
+once the funds have been received.
+</p>
+</div>
+
+<div class="payment-step">
+<strong>STEP 4 – AGREEMENT PREPARATION</strong>
+<p>
+Following verification, the proposed
+Private Hook Up Escort Agreement involving
+Ms. Mia Jones will be prepared for review.
+</p>
+</div>
+
+<div class="payment-step">
+<strong>STEP 5 – MUTUAL REVIEW & CONSENT</strong>
+<p>
+The agreement will be provided to the relevant
+parties for independent review and voluntary
+acceptance. A copy will be issued to each party
+after all required approvals and signatures.
+</p>
+</div>
+
+<h3 style="color:#e1bd72;">
+IMPORTANT PAYMENT NOTICE
+</h3>
+
+<p>
+Payment verification does not automatically
+guarantee partner participation, availability,
+or agreement approval. No person is obligated
+to participate or sign an agreement.
+</p>
+
+<p>
+All payment, refund, cancellation, and
+confidentiality terms remain subject to the
+written agreement and applicable Australian laws.
+</p>
+
+<p>
+<strong>Private Hook Up Services</strong><br>
+Administration & Client Support
+</p>
+
+</div>
+</section>
+
+</section>
+
+<footer>
+  © 2026 Private Hook Up Services<br>
+  Professional Service Information Portal
+</footer>
+
+</body>
+</html>
